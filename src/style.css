@@ -1,24 +1,26 @@
-*{margin:0;padding: 0;}
-body{
-  background-color: rgb(241, 242, 246);
+* {
+  margin: 0;
+  padding: 0;
 }
-
-.fl{
+body {
+  background-color: #f1f2f6;
+}
+.fl {
   float: left;
 }
-.fr{
+.fr {
   float: right;
 }
-.clear:after{
+.clear:after {
   content: "";
   height: 0;
   display: block;
   clear: both;
 }
-.mt{
+.mt {
   margin-top: 20px;
 }
-.mb{
+.mb {
   margin-bottom: 20px;
 }
 .ml {
@@ -27,6 +29,6 @@ body{
 .mr {
   margin-right: 20px;
 }
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }

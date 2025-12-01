@@ -8,7 +8,6 @@ const service:AxiosInstance = axios.create({
 
 //请求拦截器
 service.interceptors.request.use((config:InternalAxiosRequestConfig)=>{
-
   return config
 },(error:AxiosError)=>{
     ElNotification({
@@ -22,8 +21,15 @@ service.interceptors.request.use((config:InternalAxiosRequestConfig)=>{
 
 //响应拦截器
 service.interceptors.response.use((response:AxiosResponse)=>{
-  console.log(response);
-  return response
+  if(response.data.code!==200){
+    ElNotification({
+      title:"Error",
+      message:response.data.message,
+      type: 'error',
+    })
+  }else{
+    return response.data
+  }
 },(error:AxiosError)=>{
     ElNotification({
       title:"Error",

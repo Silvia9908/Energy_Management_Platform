@@ -158,7 +158,7 @@ const menulist2 = [
     },
 ]
 //登录接口
-Mock.mock("http://www.demo.com/login","post",(options:any)=>{
+Mock.mock("https://www.demo.com/login","post",(options:any)=>{
   const {username,password} = JSON.parse(options.body);
   if(username === "admin"&&password ==="admin666"){
     return {
@@ -170,7 +170,7 @@ Mock.mock("http://www.demo.com/login","post",(options:any)=>{
           username:"aaa",
           roles:["admin"]
         },
-        menulist
+        menulist:menulist
       }
     }
   }else if(username==="user"&&password==="user666"){
