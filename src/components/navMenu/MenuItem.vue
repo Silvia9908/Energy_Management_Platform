@@ -12,7 +12,12 @@
       :item="child"
     ></my-menu>
   </el-sub-menu>
-  <el-menu-item v-else :index="item.url" v-show="!(item.name === '订单详情')">
+  <el-menu-item
+    v-else
+    :index="item.url"
+    @click="add(item.name, item.url, item.icon)"
+    v-show="!(item.name === '订单详情')"
+  >
     <el-icon><component :is="item.icon"></component></el-icon>
     <span>{{ item.name }}</span>
   </el-menu-item>
@@ -20,6 +25,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { MenuItem as MenuItemType } from "@/types/user";
+import { useTabStore } from "@/store/tabs";
 
 export default defineComponent({
   name: "MyMenu",
@@ -29,8 +35,18 @@ export default defineComponent({
       required: true,
     },
   },
+  setup() {
+    const tabsStore = useTabStore();
+    const { addTab, setCurrentTab } = tabsStore;
+    const add = (name: string, url: string, icon: string) => {
+      addTab(name, url, icon); //添加标签
+      setCurrentTab(name, url);
+    };
+    return { add };
+  },
 });
 </script>
+
 <style scoped lang="less">
 .is-active {
   background-color: rgb(34, 136, 255);
